@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Zap, Trophy, Code2, Cpu } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Lanyard from './Lanyard';
 
 const Home = () => {
   const stats = [
@@ -44,61 +45,93 @@ const Home = () => {
     <div className="pt-24 pb-20">
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-        <motion.div
-          className="text-center"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.div variants={itemVariants} className="mb-6">
-            <div className="inline-block px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30">
-              <span className="text-cyan-400 text-sm font-mono">// Welcome to my digital space</span>
-            </div>
-          </motion.div>
-
-          <motion.h1
-            variants={itemVariants}
-            className="text-6xl md:text-7xl font-bold mb-6 leading-tight"
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+          
+          {/* Text Content */}
+          <motion.div
+            className="flex-1 text-center lg:text-left"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <span className="bg-gradient-to-r from-cyan-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent">
-              Building Smart
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-pink-500 via-cyan-400 to-pink-500 bg-clip-text text-transparent">
-              Systems & Solutions
-            </span>
-          </motion.h1>
-
-          <motion.p variants={itemVariants} className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-            IoT Developer | Hardware Enthusiast | Hackathon Winner
-            <br />
-            Turning ideas into intelligent embedded systems with ESP32, Arduino, and cutting-edge technologies.
-          </motion.p>
-
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Link to="/projects" className="group relative inline-flex items-center justify-center px-8 py-3 font-semibold text-white overflow-hidden rounded-lg">
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-cyan-600 transition-transform duration-300 group-hover:scale-110"></div>
-              <div className="relative flex items-center gap-2">
-                View Projects
-                <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
+            <motion.div variants={itemVariants} className="mb-6">
+              <div className="inline-block px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/30">
+                <span className="text-cyan-400 text-sm font-mono">// Welcome to my digital space</span>
               </div>
-            </Link>
+            </motion.div>
 
-            <a href="https://github.com/gourab354" target="_blank" rel="noopener noreferrer" className="px-8 py-3 border border-cyan-500 text-cyan-400 rounded-lg hover:bg-cyan-500/10 transition-all font-semibold flex items-center justify-center gap-2 group">
-              <Cpu size={20} />
-              GitHub Profile
-            </a>
+            <motion.h1
+              variants={itemVariants}
+              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+            >
+              <span className="bg-gradient-to-r from-cyan-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent">
+                Building Smart
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-pink-500 via-cyan-400 to-pink-500 bg-clip-text text-transparent">
+                Systems & Solutions
+              </span>
+            </motion.h1>
+
+            <motion.p variants={itemVariants} className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              IoT Developer | Hardware Enthusiast | Hackathon Winner
+              <br />
+              Turning ideas into intelligent embedded systems with ESP32, Arduino, and cutting-edge technologies.
+            </motion.p>
+
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+              <Link to="/projects" className="group relative inline-flex items-center justify-center px-8 py-3 font-semibold text-white overflow-hidden rounded-lg">
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-cyan-600 transition-transform duration-300 group-hover:scale-110"></div>
+                <div className="relative flex items-center gap-2">
+                  View Projects
+                  <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
+                </div>
+              </Link>
+
+              <a href="https://github.com/gourab354" target="_blank" rel="noopener noreferrer" className="px-8 py-3 border border-cyan-500 text-cyan-400 rounded-lg hover:bg-cyan-500/10 transition-all font-semibold flex items-center justify-center gap-2 group">
+                <Cpu size={20} />
+                GitHub Profile
+              </a>
+            </motion.div>
+
+            {/* Scroll Indicator */}
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="text-gray-500 text-sm hidden lg:block"
+            >
+              ↓ Scroll to explore
+            </motion.div>
           </motion.div>
 
-          {/* Scroll Indicator */}
+          {/* Lanyard Component as Photo/Intro */}
+          <motion.div
+            className="flex-1 relative flex justify-center items-center w-full h-[500px]"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+          >
+            {/* Glowing background effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-pink-500 blur-3xl opacity-20 rounded-full animate-pulse"></div>
+            
+            <Lanyard 
+              position={[0, 0, 20]} 
+              gravity={[0, -40, 0]} 
+              frontImage="/profile.jpg"
+              imageFit="cover"
+            />
+          </motion.div>
+          
+          {/* Scroll Indicator Mobile */}
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="text-gray-500 text-sm"
+            className="text-gray-500 text-sm lg:hidden w-full text-center mt-8"
           >
             ↓ Scroll to explore
           </motion.div>
-        </motion.div>
+
+        </div>
       </section>
 
       {/* Stats Section */}
@@ -146,11 +179,12 @@ const Home = () => {
             {skills.map((skillGroup, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                whileHover={{ scale: 1.05, translateY: -8 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="p-6 rounded-xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 group"
+                transition={{ duration: 0.5, delay: index * 0.1, type: "spring", stiffness: 100 }}
+                className="p-6 rounded-xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm border border-cyan-500/20 shadow-lg hover:shadow-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 group"
               >
                 <h3 className="text-cyan-400 font-semibold mb-4 text-lg uppercase tracking-wider">
                   {skillGroup.category}

@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navigation from './components/Navigation';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Projects from './pages/Projects';
-import Certificates from './pages/Certificates';
-import About from './pages/About';
-import Contact from './pages/Contact';
+import Navigation from './Navigation';
+import Footer from './Footer';
+import Home from './Home';
+import Projects from './Projects';
+import Certificates from './Certificates';
+import About from './About';
+import Contact from './Contact';
 import './App.css';
 
 function App() {

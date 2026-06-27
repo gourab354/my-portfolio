@@ -60,11 +60,12 @@ const Certificates = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, scale: 0.8, y: 40 },
     visible: {
       opacity: 1,
+      scale: 1,
       y: 0,
-      transition: { duration: 0.6 },
+      transition: { type: 'spring', stiffness: 100, damping: 15 },
     },
   };
 
@@ -186,7 +187,8 @@ const Certificates = () => {
               <motion.div
                 key={cert.id}
                 variants={itemVariants}
-                className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 overflow-hidden"
+                whileHover={{ scale: 1.05, y: -10, zIndex: 10 }}
+                className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-slate-800 to-slate-900 border border-cyan-500/20 shadow-lg hover:shadow-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300 overflow-hidden"
               >
                 {/* Background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-pink-500/0 group-hover:from-cyan-500/10 group-hover:to-pink-500/10 transition-all duration-300"></div>

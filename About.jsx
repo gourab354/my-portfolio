@@ -140,11 +140,12 @@ const About = () => {
             ].map((item, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                whileHover={{ scale: 1.05, translateY: -8 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="p-6 rounded-xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300"
+                transition={{ duration: 0.5, delay: idx * 0.1, type: "spring", stiffness: 100 }}
+                className="p-6 rounded-xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-sm border border-cyan-500/20 shadow-lg hover:shadow-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300"
               >
                 <h4 className="text-lg font-bold text-white mb-2">{item.title}</h4>
                 <p className="text-gray-400">{item.desc}</p>
