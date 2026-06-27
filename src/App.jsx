@@ -7,15 +7,33 @@ import Projects from './pages/Projects';
 import Certificates from './pages/Certificates';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Ferrofluid from './components/Ferrofluid';
 import './App.css';
 
 function App() {
   return (
     <Router>
       <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden">
-        {/* Background Grid Animation */}
-        <div className="fixed inset-0 -z-10 bg-gradient-to-br from-slate-950 via-blue-950/20 to-slate-950">
-          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        {/* Background Ferrofluid Animation */}
+        <div className="fixed inset-0 -z-10 bg-slate-950">
+          <div className="absolute inset-0 opacity-25">
+            <Ferrofluid
+              colors={["#ffffff","#ffffff","#ffffff"]}
+              speed={0.5}
+              scale={1.6}
+              turbulence={1}
+              fluidity={0.1}
+              rimWidth={0.2}
+              sharpness={2.5}
+              shimmer={1.5}
+              glow={2}
+              flowDirection="down"
+              opacity={1}
+              mouseInteraction
+              mouseStrength={1}
+              mouseRadius={0.35}
+            />
+          </div>
         </div>
 
         <Navigation />
